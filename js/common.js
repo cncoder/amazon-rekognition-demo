@@ -1,9 +1,9 @@
 /// <reference types="aws-sdk" />
 
-const BUCKET_NAME = "Your-Bucket-Name";
+const BUCKET_NAME = "rek.yicodes.com";
 const MAX_FILE_LENGTH = 4194304;	// 4MB Limited
-const REGION = "us-west-2";
-const POOL_ID = "Your-Pool-Id";
+const REGION = "us-east-1";
+const POOL_ID = "us-east-1:aed9a07f-47ea-42fe-b569-46fc43240156";
 const MAX_LABELS = 50;
 const MIN_CONFIDENCE = 30;
 const MIN_SIMILARITY = 80;
@@ -143,6 +143,8 @@ function Labels_Get() {
 	reader.readAsDataURL(file);
 }
 
+
+
 function Detect_Labels(dataURI) {
 	var params = {MaxLabels: MAX_LABELS, MinConfidence: MIN_CONFIDENCE, Image: {Bytes:dataURItoBlob(dataURI)}};
 	var rekognition = new AWS.Rekognition();
@@ -157,6 +159,11 @@ function Detect_Labels(dataURI) {
 			modal[0].style.display = "none";
 		}
 	});
+}
+
+function Handle_Cele_Get_Data(data) {
+	var info = document.getElementById("pic-info");
+	console.log(data);
 }
 
 function Handle_Labels_Get_Data(data) {
